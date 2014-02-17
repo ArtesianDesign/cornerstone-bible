@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="btMatogertelTagCloudLite">
+		<field name="bID" type="I">
+			<key />
+			<autoincrement />
+			<unsigned />
+		</field>
+		<field name="akIDs" type="X2"></field>
+		<field name="maxTags" type="I"></field>
+		<field name="tagOrder" type="C" size="255"></field>
+		<field name="link_to_cID" type="I"></field>
+	</table>
+</schema>

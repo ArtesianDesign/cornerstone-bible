@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="btExpandableContent">
+		<field name="bID" type="I">
+			<key />
+			<unsigned />
+		</field>
+		<field name="title" type="X2">
+		</field>
+		<field name="speed" type="C" size="25"></field>
+		<field name="visibility" type="C" size="25"></field>
+		<field name="content" type="X2">
+		</field>
+	</table>
+</schema>

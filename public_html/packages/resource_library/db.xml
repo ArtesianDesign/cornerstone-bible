@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="ResourceLibraryConfig">
+		<field name="configKey" type="I">
+			<KEY/>
+			<AUTOINCREMENT/>
+		</field>
+		<field name="configValue" type="X2"/>
+	</table>
+	
+	
+	<table name="ResourceLibraryAuthors">
+		<field name="speaker_id" type="I">
+			<AUTOINCREMENT/>
+			<UNSIGNED/>
+			<KEY/>
+		</field>
+		<field name="speaker_name" type="C" size="255">
+			<NOTNULL/>
+			<DEFAULT value=""/>
+		</field>
+		<field name="order_num" type="I" size="10">
+			<NOTNULL/>
+			<DEFAULT value="0"/>
+		</field>
+		<field name="url" type="C" size="255" />
+	</table>
+	
+	
+	<table name="ResourceLibrarySeries">
+		<field name="series_id" type="I">
+			<KEY/>
+			<AUTOINCREMENT/>
+			<NOTNULL/>
+			<UNSIGNED/>
+		</field>
+		<field name="series_name" type="C" size="255">
+			<NOTNULL/>
+			<DEFAULT value=""/>
+		</field>
+		<field name="url" type="C" size="255" />
+	</table>
+	
+	
+	<table name="ResourceLibraryAudio">
+	    <field name="sermon_id" type="I">
+			<KEY/>
+			<AUTOINCREMENT/>
+			<NOTNULL/>
+			<UNSIGNED/>
+	    </field>
+	    <field name="speaker_id" type="I">
+			<NOTNULL/>
+			<UNSIGNED/>
+			<DEFAULT value="0"/>
+	    </field>
+	    <field name="series_id" type="I">
+		  <UNSIGNED/>
+	    </field>
+	    <field name="date" type="T">
+		  <NOTNULL/>
+		  <DEFAULT value="0000-00-00"/>
+		</field>
+	    <field name="is_evening" type="L"><DEFAULT value="0"/></field>
+	    <field name="title" type="C" size="255" />
+	    <field name="reference" type="C" size="255" />
+	    <field name="length" type="I"><UNSIGNED/></field>
+	    <field name="mp3file" type="C" size="255">
+		  <NOTNULL/>
+		</field>
+		<index name="speaker_id">
+		  <col>speaker_id</col>
+		  <col>series_id</col>
+		  <col>date</col>
+		</index>
+	</table>
+  
+</schema>
+
+
+

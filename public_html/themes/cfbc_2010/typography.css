@@ -1,0 +1,60 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* Colors:
+Blue: #007db0;
+Dark Blue: #006699;
+Gray: #939598;
+Charcoal: #535558;
+Blackish: #232528;
+*/
+
+body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size:13px; color:#535558; }
+
+a { color:#007db0; }
+a:hover { color:#000; }
+
+h1, h2, h3 { font-weight:normal; }
+h1 { font-size:34px; margin: 0 0 15px 0; color:#939598; line-height:1; }
+h2 { font-size:24px; margin:17px 0 7px 0; color:#007db0; }
+h3 { font-size:16px; margin:15px 0 2px 0; color:#007db0; }
+h4 { font-size:14px; margin:15px 0 0 0; color:#232528; }
+
+p,
+ul,
+ol,
+address,
+pre,
+table,
+div { color:#535558; font-size:13px; margin:0 0 18px 0; }
+div { margin:0; }
+
+strong, b { font-weight:bold; color:#007db0; }
+em, i { font-style:italic; color:#333538; }
+
+hr { outline:0; border:0; padding:0; margin:15px 0; height:1px; border-bottom:1px solid #777  }
+
+
+address { font-style:normal; }
+blockquote { color:#007db0; margin:20px; font-family:Georgia, serif; font-style:italic; }
+p { line-height:142%; text-align:justify; }
+ul { list-style-type:inherit; }
+ol { }
+
+#page .content-block ul,
+#page .content-block ol { margin-left:20px; }
+
+.red, #page .red { color:red; }
+
+
+/* Blog */
+.ccm-blog-post-preview { padding:0 0 5px 0; margin-top:0; border-top:1px solid #777; }
+.ccm-blog-post-preview h2 { line-height:1.1; border; font-size:25px; }
+.ccm-blog-post-content { margin-bottom:30px; }
+
+
+/**** Misc ****/
+.no-top-margin { margin-top:0; }
+.image-float-right { float:right; padding:0 0 15px 15px; clear:none; display:inline-block; }
+.image-float-left, #page .image-float-left { float:left; padding:0 15px 15px 0; clear:none; display:inline-block; }
+.lowercase, #page .lowercase, #page a.lowercase { text-transform:lowercase; }

@@ -1,0 +1,43 @@
+Sisimizi's Download Folder for concrete5 
+(c)2009 Sascha Biesgen, http://www.sisimizi.org
+
+This is free software under the terms of the MIT license
+See http://www.opensource.org/licenses/mit-license.php for more information
+Free icons come from http://icojoy.com/ (Free web development icons #4 SE)
+
+
+Manual installation: 
+Copy the inner "sisimizis_download_folder" folder (from inside the "blocks" folder) to the /blocks folder of your
+concrete5 installation (the outer one on c5's root where index.php resides). Do NOT change its folder's name. 
+Open c5 dashboard, go to "Add Functionality", scroll down the list, install the new block and enjoy. 
+
+Configuring hints: 
+- When configuring Sisimizi's Download Folder block, be careful which folders/directories you choose. 
+"Path to download folder" is a path relative from c5's root folder and MUST be on the same server.
+If the path begins with ./ it means it is within c5's root folder or below, with ../ it is outside c5's root.
+- If your download folder is inside c5's directory structure, take care that it's name does not collide with any
+of your concrete5 page aliases. An example for a relative path within c5 would look like ./mydownloads/
+- If your download folder is on the same server but outside c5's directory structure, you probably use a subdomain
+or redirection to access the folder. An example for a relative path outside c5 would look like ../files/public/
+- If you use a subdomain or redirection for accessing your download folder, you have to add it on "Subdomain URL"
+field as a full URL like http://download.sisimizi.org/ or http://download.sisimizi.org/software/
+- The Sisimizi's Download Folder block will try to substitute missing prefixes and slashes on relative path and 
+subdomain URL, but you should be careful that you insert valid paths/URLs. 
+- The listing will not show inner subdirectories, (..) for navigating folders and .htaccess files. For excluding other 
+specific files you can edit line 29 on file view.php ("read filelist" section) - but again, be careful about what you do.
+
+
+*** IMPORTANT NOTE ***
+- If you want to force browsers downloading files instead of opening in the browser or starting a linked application,
+you should add such lines for any fileformat to a .htaccess file in your download folder:
+
+AddType application/x-msdownload txt
+AddType application/x-msdownload mp3
+...
+
+This example is for text (*.txt) and MP3 (*.mp3) files, you can add it for all file types you need.
+It works for most browsers and file types, but you have to empty your browser cache to see the effect, 
+if you opened any file before! 
+
+
+Enjoy :)

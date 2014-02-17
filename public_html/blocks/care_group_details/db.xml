@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<schema version="0.3">
+
+	<table name="btCareGroupDetails">
+		<field name="bID" type="I">
+			<key />
+			<unsigned />
+		</field>
+		<field name="cgName" type="C" size="255"></field>
+		<field name="cgLeaderNames" type="C" size="255"></field>
+		<field name="cgPhoto" type="I">
+			<unsigned />
+			<default value="0" />
+		</field>
+		<field name="regionID" type="I"></field>
+		<field name="cityID" type="I"></field>
+		<field name="cgDateStamp" type="C" size="255"></field>
+		<field name="cgTimeEnd" type="C" size="255"></field>
+		<field name="cgEmail" type="C" size="255"></field>
+		<field name="cgPhone" type="C" size="255"></field>
+	</table>
+	
+	<table name="btCareGroupRegions">
+		<field name="regionID" type="I">
+			<key />
+			<unsigned />
+		</field>
+		<field name="regionName" type="C" size="255"></field>
+	</table>
+	
+	<table name="btCareGroupCities">
+		<field name="cityID" type="I">
+			<key />
+			<unsigned />
+		</field>
+		<field name="cityName" type="C" size="255"></field>
+	</table>
+	
+</schema>

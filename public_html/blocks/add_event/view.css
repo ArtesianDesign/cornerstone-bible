@@ -1,0 +1,95 @@
+#simplecal {
+	padding-bottom: 15px;
+	padding-top: 15px;
+	border-bottom-color: #d4d4d4;
+	border-bottom-style: dotted;
+	border-bottom-width: thin;
+	width: 100%;
+	float: left;
+}
+
+#simplecal  #img {
+	float: left;
+	background-image: url(./tools/calendar_mid.png);
+	background-repeat: no-repeat;
+	height: 60px;
+	width: 65px;
+	
+}
+
+#simplecal #month {
+	color: white;
+	padding-left: 8px;
+	padding-top: 8px;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Futura;
+}
+
+#simplecal #day {
+	font-family: , serif;
+	line-height: 28px;
+	color: #828282;
+	font-size: 28px;
+	padding-top: 2px;
+	font-weight: bold;
+	text-align: center;
+}
+
+#simplecal #titlehead {
+	float: left;
+}#simplecal #title, #page #simplecal #title {
+	padding-top: 5px;
+	font-weight: bold;
+	font-family: sans-serif;
+	padding-left: 15px;
+	font-size: 30px;
+	float: left;
+	width: 100%;
+}
+
+#simplecal #local {
+	clear: left;
+	padding-left: 15px;
+	float: left;
+	font-size: 14px;
+	font-family: sans-serif;
+}
+
+#simplecal #deswrap {
+}
+
+#simplecal #description {
+	clear: left;
+	float: left;
+	margin-left: 75px;
+	margin-right: 0px;
+}
+#simplecal #description p { margin:0 0 10px 0; }
+
+#simplecal #datespan {
+	padding-right: 15px;
+	font-size: 14px;
+	float: right;
+}
+
+#simplecal #time {
+	padding-right: 15px;
+	font-size: 18px;
+	float: right;
+	clear: right;
+}
+
+#simplecal #eventfoot {
+	font-size: 12px;
+	font-family: Futura;
+	padding-right: 15px;
+	clear: both;
+	float: right;
+}
+
+#formfield {
+	padding-bottom: 10px ;
+	float: left;
+	clear: left;
+}

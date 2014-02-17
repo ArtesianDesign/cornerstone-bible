@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<schema version="0.3">
+
+	<table name="btHomeFeaturedLower">
+		<field name="bID" type="I">
+			<key />
+			<unsigned />
+		</field>
+		<field name="numColumns" type="I"></field>
+		
+		<field name="titleOne" type="C" size="256"></field>
+		<field name="fIDOne" type="I">
+			<unsigned />
+			<default value="0" />
+		</field>
+		<field name="textOne" type="X2"></field>
+		<field name="linkOne" type="C" size="128"></field>
+		<field name="imageAlignOne" type="C" size="128"></field>
+		
+		
+		<field name="titleTwo" type="C" size="256"></field>
+		<field name="fIDTwo" type="I">
+			<unsigned />
+			<default value="0" />
+		</field>
+		<field name="textTwo" type="X2"></field>
+		<field name="linkTwo" type="C" size="128"></field>
+		<field name="imageAlignTwo" type="C" size="128"></field>		
+		
+		
+		<field name="titleThree" type="C" size="256"></field>
+		<field name="fIDThree" type="I">
+			<unsigned />
+			<default value="0" />
+		</field>
+		<field name="textThree" type="X2"></field>
+		<field name="linkThree" type="C" size="128"></field>
+		<field name="imageAlignThree" type="C" size="128"></field>		
+		
+		
+		<field name="titleFour" type="C" size="256"></field>
+		<field name="fIDFour" type="I">
+			<unsigned />
+			<default value="0" />
+		</field>
+		<field name="textFour" type="X2"></field>
+		<field name="linkFour" type="C" size="128"></field>
+		<field name="imageAlignFour" type="C" size="128"></field>
+		
+	</table>
+</schema>

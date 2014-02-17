@@ -1,0 +1,18 @@
+ul.ccm-blog-archive-list {
+  list-style: none;
+  margin: 0 0 10px 5px;
+  padding: 0;
+}
+
+ul.ccm-blog-archive-list li {
+  margin: 0;
+  padding: 0;
+}
+
+div.ccm-blog-archive-rss a {
+  text-decoration: none;
+}
+
+div.ccm-blog-archive-rss img {
+  vertical-align: middle;
+}

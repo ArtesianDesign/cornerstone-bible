@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="btGetDirections">
+		<field name="bID" type="I">
+			<key />
+			<unsigned />
+		</field>
+        <field name="street" type="X2">
+		</field>
+        <field name="city" type="X2">
+		</field>
+        <field name="state" type="X2">
+		</field>
+        <field name="zip" type="X2">
+		</field>
+	</table>
+</schema>
