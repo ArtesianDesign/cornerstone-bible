@@ -30,13 +30,10 @@
 	<div id="header">
     	<div id="logo">
     		<?php $homeLink = DIR_REL ? BASE_URL . DIR_REL . '/' : BASE_URL . '/'; ?>
-        	<a href="<?php echo $homeLink; ?>" title="<?php echo SITE; ?>">
-        		<img src="<?php echo $this->getThemePath() . DIR_REL ?>/images/cornerstone-fellowship-bible-church-logo.png" width="290" height="44" alt="Cornerstone Fellowship Bible Church" />
-        	<?php /*
+        	<a href="<?php echo $homeLink; ?>" title="<?php echo SITE; ?>"><img src="<?php echo $this->getThemePath() . DIR_REL ?>/images/Cornerstone-LogoX2.png" alt="Cornerstone Fellowship Bible Church of Riverside" /><?php /*
 				$block = Block::getByName('My_Site_Name');
 				if( $block && $block->bID ) { $block->display();
-				} else { echo '<span>' . SITE . '</span>'; } */ ?>
-			</a>
+				} else { echo '<span>' . SITE . '</span>'; } */ ?></a>
       </div>
         
       <div id="mainNav">

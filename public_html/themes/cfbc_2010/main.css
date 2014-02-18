@@ -128,9 +128,9 @@ a img, img {
 #page #logo {
     float: left;
     width: 290px;
-    height: 44px;
+    height: 49px;
     margin: 24px 0 0 0;
-    background: url(images/cornerstone-fellowship-bible-church-logo.png) 0 0 no-repeat;
+    /*background: url(images/CornerstoneLogo.png) 0 0 no-repeat;*/
 }
 
 #page #logo a {
@@ -138,6 +138,11 @@ a img, img {
     height: 44px;
     margin: 0;
     padding: 0;
+}
+
+#page #logo img {
+    width: 100%;
+    height: auto;
 }
 
 #page #logo a span {
