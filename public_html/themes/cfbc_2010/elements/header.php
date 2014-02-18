@@ -3,7 +3,7 @@
 <html xml:lang="en-us" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <!-- Site Header Content //-->
-<link rel="stylesheet" media="screen" type="text/css" href="<?php echo $this->getStyleSheet('main.css')?>" />
+<link rel="stylesheet" media="screen" type="text/css" href="<?php echo $this->getStyleSheet('main.css')?>?date=02-16-2014" />
 <link rel="stylesheet" media="screen" type="text/css" href="<?php echo $this->getStyleSheet('typography.css')?>" />
 
 <meta name="google-site-verification" content="qfC566teKoCT1-T_S3lIR6U8EAgM5DHHe0D8T5BvEB8" />
