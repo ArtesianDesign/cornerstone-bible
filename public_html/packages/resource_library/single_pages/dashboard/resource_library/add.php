@@ -4,6 +4,8 @@ $ih = Loader::helper('concrete/interface');
 $valt = Loader::helper('validation/token');
 $form = Loader::helper('form');
 Loader::model('resource_library', 'resource_library');
+Loader::model('package');
+$packageDir = Package::getByHandle('resource_library')->getRelativePath();
 ?>
 
 <style type="text/css">
@@ -66,15 +68,13 @@ Loader::model('resource_library', 'resource_library');
 					&nbsp; or new series <?php echo $form->text('series_add', array('style'=>'width:150px;'))?>
 			</td></tr>
 			<tr><td>
+				<div id="audio_file_wrapper">
 				<?php echo $form->label('mp3file_existing', t('MP3 Audio File'))?>
 				<?php echo $form->select('mp3file_existing',ResourceLibrary::getMp3Files()); ?>
+				&nbsp; or upload a new audio file:
+				<input id="file_upload" type="file" name="file_upload"/>
+				</div>
 			</td></tr>
-			<!--
-			<tr><td>
-					<?php echo $form->label('resource_file', t('File'))?>
-					<input id="mp3file_upload" type="file" name="mp3file_upload"/>
-			</td></tr>
-			-->
 		</table>
 		
 		<input type="hidden" name="url" id="url" value="" />
@@ -82,9 +82,30 @@ Loader::model('resource_library', 'resource_library');
 		<div class="ccm-spacer">&nbsp;</div>
 		<br/>
 		<div class="ccm-buttons">
-			<?php echo $ih->submit(t('Add'), 'resource-library-add-form', 'left')?>
+			<?php //echo $ih->submit(t('Add'), 'resource-library-add-form', 'left')?>
+			<input type="submit" class="btn ccm-button-v2 success" value="Add Audio" id="ccm-submit-resource-library-add-form" name="ccm-submit-resource-library-add-form">
 		</div>
 		<div class="ccm-spacer">&nbsp;</div>
 		</fieldset>
 	</form>
+
+<?php $timestamp = time();?>
+<script>
+$(function() {
+  $('#file_upload').uploadify({
+  	  'fileTypeDesc' : 'Audio Files',
+      'fileTypeExts' : '*.mp3',
+      'swf'      : '<?php echo $packageDir; ?>/libraries/uploadify/uploadify.swf',
+      'uploader' : '<?php echo $packageDir; ?>/libraries/uploadify/uploadify.php',
+      'formData' : {
+        'timestamp' : '<?php echo $timestamp;?>',
+        'token'     : '<?php echo md5('resource_library_salt' . $timestamp);?>',
+        'DIR_BASE' : '<?php echo DIR_BASE ?>'
+      },
+      'onUploadSuccess' : function(file, data, response) {
+        $('#mp3file_existing').append('<option value="' + file.name + '" selected>' + file.name + '</option>');
+      }
+  });
+});
+</script>
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneFooterWrapper(false); ?>
