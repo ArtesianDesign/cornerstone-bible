@@ -50,7 +50,20 @@ class DashboardResourceLibraryManageListController extends Controller {
 		
     }//END function update_audio()
     
-    
+    public function request_delete($resourceID) {
+    	$this->set('resourceID', $resourceID);
+    	Loader::model('resource_library','resource_library');
+
+    	if ( ResourceLibrary::delete($resourceID) ) {
+        $message = t('Audio resource has been deleted.') . ' <br/>' . $extraMessage;
+        $this->set('message', $message);
+        $this->view();
+			} else {
+        $message = t('Error deleting audio resource.') . ' <br/>' . $extraMessage;
+        $this->set('message', $message);
+        $this->view();
+			}
+    }
 
 }
 ?>

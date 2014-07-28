@@ -39,7 +39,7 @@ table#resource-library-list .button-cell {
 		//List generate row for each resource item:
 		foreach ($resources as $resource) {
 			if ($rowNum&1) { $rowClass = 'odd'; } else { $rowClass = 'even'; }
-			$deleteLink = '<a class="btn" title="Delete" href="' . $this->url('/dashboard/resource_library/manage/list', 'request_delete', $resource['sermon_id']) . '"><i class="icon-remove"</i></a>';
+			$deleteLink = '<a class="btn deleteBtn" title="Delete" href="' . $this->url('/dashboard/resource_library/manage/list', 'request_delete', $resource['sermon_id']) . '"><i class="icon-remove"</i></a>';
 			$editLink = '<a class="btn" title="Edit" href="' . $this->url('/dashboard/resource_library/manage/edit', 'edit_item' , $resource['sermon_id']) . '"><i class="icon-pencil"></i></a>';
 			$html = '<tr class="' . $rowClass . '" id="resource' . $rowNum . '">';
 			$html .= '<td>' . date('F j, Y', strtotime($resource['date'])) . '</td>';
@@ -57,3 +57,13 @@ table#resource-library-list .button-cell {
 		</tbody>
 	</table>
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneFooterWrapper(false); ?>
+<script type="text/javascript">
+$(function(){
+	$('#resource-library-list a.deleteBtn').click(function(e){
+		var answer = confirm("Are you sure you want to delete this resource item?");
+		if (!answer) {
+			e.preventDefault();
+		}
+	});
+});
+</script>
