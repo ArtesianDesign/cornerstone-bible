@@ -15,6 +15,15 @@
          $bvc = new BlockView();
          $bvc->render($footerCopyright );
          ?>
+
+         <?php
+         $uInfo = new User();
+         if ($uInfo->isLoggedIn()) {
+            echo '<a href="' . DIR_REL . '/login/-/logout/" rel="nofollow" class="lowercase">Admin Logoff</a>';
+         } else { 
+            echo '<a href="' . DIR_REL . '/login/" rel="nofollow">Admin Login</a>';
+         }
+         ?> 
       </div>
       <div class="credit"><a href="http://www.artesiandesigninc.com" target="_blank" title="Web Design in Riverside, CA by Artesian Design Inc.">Web design and development by Artesian Design</a></div>
       <div class="clearfix"></div>

@@ -570,6 +570,50 @@ a img, img {
     width: 80px;
 }
 
+/**** Forms ****/
+fieldset {
+    margin: .5em 0;
+    padding: 1em;
+    outline: 0;
+    border: 1px solid #ddd;
+    background: #f2f2f2;
+}
+fieldset legend {
+    padding: .5em;
+    text-transform: uppercase;
+}
+
+#page select,
+#page textarea,
+#page input[type="text"],
+#page input[type="password"],
+#page input[type="datetime"],
+#page input[type="datetime-local"],
+#page input[type="date"],
+#page input[type="month"],
+#page input[type="time"],
+#page input[type="week"],
+#page input[type="number"],
+#page input[type="email"],
+#page input[type="url"],
+#page input[type="search"],
+#page input[type="tel"],
+#page input[type="color"] {
+    display: inline-block;
+    padding: 5px;
+    outline: 0;
+    border: 1px solid #ccc;
+            border-radius: 4px;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+
+}
+
+#page input[type="submit"],
+#page button[type="submit"] {
+    margin: .5em 0;
+}
+
 
 /**** Footer Content ****/
 #page #footer {
