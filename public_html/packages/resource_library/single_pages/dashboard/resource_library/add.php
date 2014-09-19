@@ -100,10 +100,15 @@ $(function() {
       'formData' : {
         'timestamp' : '<?php echo $timestamp;?>',
         'token'     : '<?php echo md5('resource_library_salt' . $timestamp);?>',
-        'DIR_BASE' : '<?php echo DIR_BASE ?>'
+        'DIR_BASE' : '<?php echo DIR_BASE ?>',
+        '<?php echo session_name();?>' : '<?php echo session_id();?>'
       },
       'onUploadSuccess' : function(file, data, response) {
         $('#mp3file_existing').append('<option value="' + file.name + '" selected>' + file.name + '</option>');
+        //alert('The file ' + file.name + ' was successfully uploaded with a response of ' + response + ':' + data);
+      },
+      'onUploadError' : function(file, errorCode, errorMsg, errorString) {
+      	alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
       }
   });
 });

@@ -13,27 +13,23 @@ class DashboardResourceLibraryAddController extends Controller {
 		$this->addHeaderItem($html->css('uploadify.css', 'resource_library'));
   }
 
-  public function view() {
-     //Loader::model('resource_library','resource_library');
-  }
-
   
   public function upload() {
   	if ($this->isPost()) {
   		$args = $this->post();
   		
   		if (!empty($_FILES)) {
-			$tempFile = $_FILES['Filedata']['tmp_name'];
-			$targetPath = $_SERVER['DOCUMENT_ROOT'] . DIR_REL . '/audio/';
-			$targetFile =  str_replace('//','/',$targetPath) . $_FILES['Filedata']['name'];
-			//mkdir(str_replace('//','/',$targetPath), 0755, true);
-			move_uploaded_file($tempFile,$targetFile);
-		}
+				$tempFile = $_FILES['Filedata']['tmp_name'];
+				$targetPath = $_SERVER['DOCUMENT_ROOT'] . DIR_REL . '/audio/';
+				$targetFile =  str_replace('//','/',$targetPath) . $_FILES['Filedata']['name'];
+				//mkdir(str_replace('//','/',$targetPath), 0755, true);
+				move_uploaded_file($tempFile,$targetFile);
+			}
   		
   	}
       
-      //$this->set('message', t('Audio resource has been added.'));
-      $this->set('message', t('Error - audio upload is not yet funtioning.'));
+    //$this->set('message', t('Audio resource has been added.'));
+    $this->set('message', t('Error - audio upload is not yet funtioning.'));
   }
   
   
