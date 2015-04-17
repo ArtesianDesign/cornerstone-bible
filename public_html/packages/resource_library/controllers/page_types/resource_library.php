@@ -81,6 +81,87 @@ class ResourceLibraryPageTypeController extends Controller {
 		if (count($audioRecords)) $this->set('audioRecords', $audioRecords);	
 		$this->set('whichTab','series');
 	}
+
+	function getMp3Length($file) {
+		$mp3file = new mp3file($file);
+		$metadata = $mp3file->get_metadata();
+
+		if (isset($metadata['Length']) AND is_numeric($metadata['Length'])) {
+			return $metadata['Length'];
+		} else {
+			return "";
+		}
+	}
+
+	function rss($limit = 12) {
+		// error_reporting(E_ALL);
+		// ini_set('display_errors', 1);
+
+		// General properties - move these into a dashboard edit page or separate include
+		$TITLE = 'Cornerstone Fellowship Bible Church Sermons';
+		$LINK = BASE_URL; //'http://cornerstonebible.org/';
+		$RSS_LANGUAGE = 'en-us';
+		$COPYRIGHT = '&#xA9; ' . date('Y') . ' Cornerstone Fellowship Bible Church';
+		$DESCRIPTION = 'Sermons from Cornerstone Fellowship Bible Church in Riverside, CA.';
+
+		// iTunes properties
+		$SUBTITLE = 'Sermons';
+		$AUTHOR = 'Cornerstone Fellowship Bible Church';
+		$SUMMARY = $DESCRIPTION;
+		$OWNER_NAME = 'Cornerstone Fellowship Bible Church';
+		$OWNER_EMAIL = 'info@cornerstonebible.org';
+		$IMAGE = 'http://cornerstonebible.org/themes/cfbc_2010/images/Cornerstone-LogoX2.png';
+		$CATEGORY = 'Religion &amp; Spirituality';
+		$SUBCATEGORY = 'Christianity';
+
+		// Other settings
+		$AUDIO_LOCAL_PATH = 'audio/';
+		$AUDIO_URL_PREFIX = BASE_URL . '/' . $AUDIO_LOCAL_PATH;
+
+		$item_html = '';
+		$audioRecords = ResourceLibrary::getSermons(NULL, NULL, NULL, $limit); //getSermons(speaker_id, searies_id, year, limit)
+
+		foreach ($audioRecords as $audioRecord) {
+			if ($audioRecord['mp3file'] != '(no audio)') {
+				$item_html .= "\t<item>\n";
+				$item_html .= "\t\t<title>" . $audioRecord['title'] . "</title>\n";
+				$item_html .= "\t\t<itunes:author>" . AUTHOR . "</itunes:author>\n";
+				$item_html .= "\t\t<itunes:subtitle>" . $audioRecord['speaker_name'] . " | " . $audioRecord['reference'] . " | Series: " . $audioRecord['series_name'] . "</itunes:subtitle>\n";
+				$item_html .= "\t\t<itunes:summary>" . $audioRecord['speaker_name'] . " | " . $audioRecord['reference'] . " | Series: " . $audioRecord['series_name'] . "</itunes:summary>\n";
+				$item_html .= "\t\t<enclosure url=\"" . $AUDIO_URL_PREFIX . $audioRecord['mp3file'] . "\" length=\"" . filesize($AUDIO_LOCAL_PATH . $audioRecord['mp3file']) . "\" type=\"audio/mp3\" />\n";
+				$item_html .= "\t\t<guid>" . $audioRecord['mp3file'] . "</guid>\n";
+				$item_html .= "\t\t<pubDate>" . date("D, j M Y G:i:s T", strtotime($audioRecord['date'])) . "</pubDate>\n";
+				$item_html .= "\t\t<itunes:duration>" . $this->getMp3Length($AUDIO_LOCAL_PATH . $audioRecord['mp3file']) . "</itunes:duration>\n";
+				$item_html .= "\t</item>\n";
+			}
+    }
+		$html = '<?xml version="1.0" encoding="UTF-8"?>';
+		$html .= "\n";
+		$html .= '<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">';
+		$html .= "\n<channel>\n";
+		$html .= "\t<title>" . $TITLE . "</title>\n";
+		$html .= "\t<link>" . $LINK . "</link>\n";
+		$html .= "\t<language>" . $RSS_LANGUAGE . "</language>\n";
+		$html .= "\t<copyright>" . $COPYRIGHT . "</copyright>\n";
+		$html .= "\t<itunes:subtitle>" . $SUBTITLE . "</itunes:subtitle>\n";
+		$html .= "\t<itunes:author>" . $AUTHOR . "</itunes:author>\n";
+		$html .= "\t<itunes:summary>" . $SUMMARY . "</itunes:summary>\n";
+		$html .= "\t<description>" . $DESCRIPTION . "</description>\n";
+		$html .= "\t<itunes:owner>\n";
+		$html .= "\t\t<itunes:name>" . $OWNER_NAME . "</itunes:name>\n";
+		$html .= "\t\t<itunes:email>" . $OWNER_EMAIL . "</itunes:email>\n";
+		$html .= "\t</itunes:owner>\n";
+		$html .= "\t<itunes:image href=\"" . $IMAGE . "\" />\n";
+		$html .= "\t<itunes:category text=\"" . $CATEGORY . "\">\n";
+		$html .= "\t\t<itunes:category text=\"" . $SUBCATEGORY . "\" />\n";
+		$html .= "\t</itunes:category>\n";
+		$html .= $item_html .= "\n";
+		$html .= "</channel>\n";
+		$html .= "</rss>";
+
+		echo $html;
+		exit;
+	}
 	
 	
 	/*** Misc ***/

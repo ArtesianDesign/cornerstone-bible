@@ -1,10 +1,12 @@
 <?php 
 
+Loader::library('mp3file', 'resource_library');
+
 class ResourceLibrary extends Model {
 	
 	// add database interactivity here
 
-	function getSermonsByURL($speaker_url = NULL, $series_url = NULL, $year = NULL) {
+	function getSermonsByURL($speaker_url = NULL, $series_url = NULL, $year = NULL, $limit = NULL) {
 		$db = Loader::db();
 
 		$sql = "
@@ -31,12 +33,16 @@ class ResourceLibrary extends Model {
 			$sql .= "AND sm.date >= '{$year}-01-01' AND sm.date <= '{$year}-12-31'\n";
 		}
 
-		$sql .= "ORDER BY sm.date DESC";
+		$sql .= "ORDER BY sm.date DESC\n";
+
+		if ( ! is_null($limit)) {
+			$sql .= "LIMIT " . $limit . "\n";
+		}
 
 		return $db->getAll($sql);
 	}
 	// following is from old Cornerstone site by Brent Moen
-	function getSermons($speaker_id = NULL, $series_id = NULL, $year = NULL) {
+	function getSermons($speaker_id = NULL, $series_id = NULL, $year = NULL, $limit = NULL) {
 		$db = Loader::db();
 
 		$sql = "
@@ -63,7 +69,11 @@ class ResourceLibrary extends Model {
 			$sql .= "AND sm.date >= '{$year}-01-01' AND sm.date <= '{$year}-12-31'\n";
 		}
 
-		$sql .= "ORDER BY sm.date DESC";
+		$sql .= "ORDER BY sm.date DESC\n";
+
+		if ( ! is_null($limit)) {
+			$sql .= "LIMIT " . $limit . "\n";
+		}
 
 		$records = $db->getAll($sql);
 
