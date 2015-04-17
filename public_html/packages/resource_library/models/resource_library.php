@@ -173,8 +173,7 @@ class ResourceLibrary extends Model {
 		if ( ! is_numeric($sermon_id)) {
 			FwError::fatal("Invalid sermon id '$sermon_id'");
 		}
-		//change this to normal DB query
-		//$db->delete("ResourceLibraryAudio", "sermon_id = ".$db->quote($sermon_id));
+		return $db->Execute("delete from ResourceLibraryAudio where sermon_id = ".$db->quote($sermon_id));
 	}
 
 	function getData($sermon_id) {

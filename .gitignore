@@ -11,6 +11,7 @@ style.prefixed.css
 public_html/files*
 public_html/system
 public_html/config/site.php
+concrete5.6.3.3
 
 ## Concrete5 Add-ons (commercial or unused)
 public_html/packages/core_commerce

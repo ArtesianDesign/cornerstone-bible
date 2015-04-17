@@ -3,13 +3,14 @@
 <div id="wrapper">
    <div class="topExtraNav">
 	  <div id="topLogin">
-	  	<?php 
+	  	<a href="http://cornerstonebible.ccbchurch.com" target="_blank">Login</a>
+	  	<?php /*
 	  	$uInfo = new User();
 		if ($uInfo->isLoggedIn()) {
 	  		echo '<a href="' . DIR_REL . '/login/-/logout/" rel="nofollow" class="lowercase">Sign Out</a>';
 		} else { 
 			echo '<a href="' . DIR_REL . '/login/" rel="nofollow">Sign In</a>';
-	  	}
+	  	}*/
 	  	?>	  	
 	  </div>
       <div class="topSearch">
