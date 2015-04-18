@@ -2,12 +2,28 @@
 class ResourceLibraryPageTypeController extends Controller {
     
 	public function on_start() {
+		// error_reporting(E_ALL);
+		// ini_set('display_errors', 1);
 		Loader::model('resource_library', 'resource_library');
+		$c = Page::getCurrentPage();
+		$this->title = SITE . ' ' . $c->getCollectionName();
+		$current_url = BASE_URL . Page::getCollectionPathFromID($c->cID);
+		$rss_link = $current_url . '/rss';
+		$rss_link_tag = '<link rel="alternate" type="application/rss+xml" title="' . $this->title 
+			. '" href="' . $rss_link . '" />';
+		$this->addHeaderItem($rss_link_tag);
 		$this->addHeaderItem(Loader::helper('html')->javascript('resource_library.js', 'resource_library'));
-		
+
+		$package = Package::getByHandle('resource_library');
+		$package_path = $package->getRelativePath();
+		// $package_path = BASE_URL . $package->getPackagePath();
+		$rss_link_image_src = $package_path . '/img/podcast-itunes2.png';
+
 		$years = ResourceLibrary::getYears();
 		$this->set('years', $years);
 		$this->set('audioPath', 'audio');
+		$this->set('rss_link', $rss_link);
+		$this->set('rss_link_image_src', $rss_link_image_src);
 	}
 
 	public function view() {
@@ -97,12 +113,12 @@ class ResourceLibraryPageTypeController extends Controller {
 		// error_reporting(E_ALL);
 		// ini_set('display_errors', 1);
 
-		// General properties - move these into a dashboard edit page or separate include
-		$TITLE = 'Cornerstone Fellowship Bible Church Sermons';
+		// General properties. TODO: move these into a dashboard edit page or separate include
+		$TITLE = $this->title; //'Cornerstone Fellowship Bible Church Sermons';
 		$LINK = BASE_URL; //'http://cornerstonebible.org/';
 		$RSS_LANGUAGE = 'en-us';
 		$COPYRIGHT = '&#xA9; ' . date('Y') . ' Cornerstone Fellowship Bible Church';
-		$DESCRIPTION = 'Sermons from Cornerstone Fellowship Bible Church in Riverside, CA.';
+		$DESCRIPTION = 'Sermons from Cornerstone Fellowship Bible Church in Riverside, CA. Speakers include Milton Vincent, Mike Berry, Karlos Limtiaco and other elders and guest speakers.';
 
 		// iTunes properties
 		$SUBTITLE = 'Sermons';
@@ -110,7 +126,7 @@ class ResourceLibraryPageTypeController extends Controller {
 		$SUMMARY = $DESCRIPTION;
 		$OWNER_NAME = 'Cornerstone Fellowship Bible Church';
 		$OWNER_EMAIL = 'info@cornerstonebible.org';
-		$IMAGE = 'http://cornerstonebible.org/themes/cfbc_2010/images/Cornerstone-LogoX2.png';
+		$IMAGE = 'http://cornerstonebible.org/images/cornerstone-sunrise-m.jpg';
 		$CATEGORY = 'Religion &amp; Spirituality';
 		$SUBCATEGORY = 'Christianity';
 

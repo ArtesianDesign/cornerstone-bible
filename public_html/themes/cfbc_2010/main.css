@@ -846,6 +846,15 @@ div.homeFeaturedLower {
 
 
 /**** Resource Library ****/
+.resources-filter .rss-link {
+    float: right;
+    line-height: 1.625em;
+}
+.rss-link img {
+    width: 30px;
+    margin: -10px 0
+}
+
 .resources-filter ul {
     display: inline-block;
     margin: 0;

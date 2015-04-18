@@ -12,6 +12,9 @@
 <?php if ($this->controller->getTask() != 'view' || $c->getAttribute('action')) { ?>
 
 <div class="resources-filter">
+	<div class="rss-link">
+		<a href="<?php echo $rss_link ?>">Subscribe to Podcast RSS <img src="<?php echo $rss_link_image_src; ?>"/></a>
+	</div>
 	Filter By: <ul class="idTabs"><li><a href="#resources-authors">Speakers</a></li><li><a href="#resources-series">Series</a></li><li><a href="#resources-date">Date</a></li><li><a href="#resources-scripture">Scripture</a></ul>
 	<!--<div id="resources-search">
 		search
