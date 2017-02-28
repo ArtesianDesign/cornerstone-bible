@@ -15,7 +15,14 @@
 	<div class="rss-link">
 		<a href="<?php echo $rss_link ?>">Subscribe to Podcast RSS <img src="<?php echo $rss_link_image_src; ?>"/></a>
 	</div>
-	Filter By: <ul class="idTabs"><li><a href="#resources-authors">Speakers</a></li><li><a href="#resources-series">Series</a></li><li><a href="#resources-date">Date</a></li><li><a href="#resources-scripture">Scripture</a></ul>
+	Filter By:
+	<ul class="idTabs">
+		<li><a href="#resources-authors">Speakers</a></li>
+		<li><a href="#resources-series">Series</a></li>
+		<li><a href="#resources-date">Date</a></li>
+		<!-- <li><a href="#resources-scripture">Scripture</a></li> -->
+		<li><a href="#resources-sundayschool">Sunday School</a></li>
+	</ul>
 	<!--<div id="resources-search">
 		search
 	</div>-->
@@ -61,9 +68,23 @@
    		</ul>
 	</div>
 	
+	<div id="resources-sundayschool" class="block">
+		<ul>
+		<?php
+    	$series = ResourceLibrary::getSundaySchool();
+    	$links='';
+		foreach ($series as $seriesRecord) {
+			//$seriesURL = $this->controller->cleanURL($series_name);
+			$links .= '<li><a href="' . BASE_URL . DIR_REL . $this->getViewPath() . '/series/' . $seriesRecord['url'] . '">' . $seriesRecord['series_name'] . '</a></li>';
+		}
+		echo $links;
+		?>
+		</ul>
+	</div>
+	<!-- 
 	<div id="resources-scripture" class="block">
 		<p>search by scripture coming soon</p>
-	</div>
+	</div> -->
 	
 	<script type="text/javascript"> 
  		$(".resources-filter ul").idTabs("resources-<?php echo $whichTab; ?>"); 

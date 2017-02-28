@@ -9,7 +9,14 @@ Loader::model('resource_library', 'resource_library');
 <?php if ($this->controller->getTask() != 'view' || $c->getAttribute('action')) { ?>
 
 <div class="resources-filter">
-	Filter By: <ul class="idTabs"><li><a href="#resources-speakers">Speakers</a></li><li><a href="#resources-series">Series</a></li><li><a href="#resources-year">Date</a></li><li><a href="#resources-scripture">Scripture</a></ul>
+	Filter By: 
+	<ul class="idTabs">
+		<li><a href="#resources-speakers">Speakers</a></li>
+		<li><a href="#resources-series">Series</a></li>
+		<li><a href="#resources-year">Date</a></li>
+		<!-- <li><a href="#resources-scripture">Scripture</a></li> -->
+		<li><a href="#resources-sundayschool">Sunday School</a></li>
+	</ul>
 	<!--<div id="resources-search">
 		search
 	</div>-->
@@ -57,6 +64,19 @@ Loader::model('resource_library', 'resource_library');
 	
 	<div id="resources-scripture" class="block">
 		<p>search by scripture coming soon</p>
+	</div>
+	
+	<div id="resources-sundayschool" class="block">
+		<ul>
+		<?php
+    	$series = ResourceLibrary::getSeriesWildcard('Sunday Schoo%');
+    	$links='';
+		foreach ($series as $seriesRecord) {
+			$links .= '<li><a href="' . BASE_URL . DIR_REL . $this->getViewPath() . '/series/' . $seriesRecord['url'] . '">' . $seriesRecord['series_name'] . '</a></li>';
+		}
+		echo $links;
+		?>
+		</ul>
 	</div>
 	
 	<script type="text/javascript"> 

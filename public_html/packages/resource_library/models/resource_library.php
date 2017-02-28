@@ -103,6 +103,17 @@ class ResourceLibrary extends Model {
 			ORDER BY series_name
 		");
 	}
+	
+	function getSundaySchool() {
+		$db = Loader::db();
+
+		return $db->getAssoc("
+			SELECT * 
+			FROM ResourceLibrarySeries
+			WHERE series_name LIKE '%Sunday School%'
+			ORDER BY series_name
+		");
+	}
 
 	function getSpeakers() {
 		$db = Loader::db();
