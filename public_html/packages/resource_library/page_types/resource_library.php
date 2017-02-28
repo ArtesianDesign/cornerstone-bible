@@ -21,7 +21,7 @@
 		<li><a href="#resources-series">Series</a></li>
 		<li><a href="#resources-date">Date</a></li>
 		<!-- <li><a href="#resources-scripture">Scripture</a></li> -->
-		<li><a href="#resources-sundayschool">Sunday School</a></li>
+		<li><a href="#resources-sunday_school">Sunday School</a></li>
 	</ul>
 	<!--<div id="resources-search">
 		search
@@ -31,10 +31,14 @@
 		<?php
     	$authors = ResourceLibrary::getSpeakersFull();
     	$nothing = sort($authors);
+    	$found_items = array();
     	$links='';
 		foreach ($authors as $authorRecord) {
 			//$nameURL = $this->controller->cleanURL($authorRecord['speaker_name']);
-			$links .= '<li><a href="' . BASE_URL . DIR_REL . $this->getViewPath() . '/author/' . $authorRecord['url'] . '">' . $authorRecord['speaker_name'] . '</a></li>';
+			if (!in_array($authorRecord['speaker_name'], $found_items)) {
+				$links .= '<li><a href="' . BASE_URL . DIR_REL . $this->getViewPath() . '/author/' . $authorRecord['url'] . '">' . $authorRecord['speaker_name'] . '</a></li>';
+			}
+			array_push($found_items, $authorRecord['speaker_name']);
 		}
 		echo $links;
    		?>
@@ -45,10 +49,14 @@
 		<ul>
 		<?php
     	$series = ResourceLibrary::getSeriesFull();
+    	$found_items = array();
     	$links='';
 		foreach ($series as $seriesRecord) {
 			//$seriesURL = $this->controller->cleanURL($series_name);
-			$links .= '<li><a href="' . BASE_URL . DIR_REL . $this->getViewPath() . '/series/' . $seriesRecord['url'] . '">' . $seriesRecord['series_name'] . '</a></li>';
+			if (!in_array($seriesRecord['series_name'], $found_items)) {
+				$links .= '<li><a href="' . BASE_URL . DIR_REL . $this->getViewPath() . '/series/' . $seriesRecord['url'] . '">' . $seriesRecord['series_name'] . '</a></li>';
+			}
+			array_push($found_items, $seriesRecord['series_name']);
 		}
 		echo $links;
 		?>
@@ -68,14 +76,18 @@
    		</ul>
 	</div>
 	
-	<div id="resources-sundayschool" class="block">
+	<div id="resources-sunday_school" class="block">
 		<ul>
 		<?php
     	$series = ResourceLibrary::getSundaySchool();
+    	$found_items = array();
     	$links='';
 		foreach ($series as $seriesRecord) {
 			//$seriesURL = $this->controller->cleanURL($series_name);
-			$links .= '<li><a href="' . BASE_URL . DIR_REL . $this->getViewPath() . '/series/' . $seriesRecord['url'] . '">' . $seriesRecord['series_name'] . '</a></li>';
+			if (!in_array($seriesRecord['series_name'], $found_items)) {
+				$links .= '<li><a href="' . BASE_URL . DIR_REL . $this->getViewPath() . '/sunday_school/' . $seriesRecord['url'] . '">' . $seriesRecord['series_name'] . '</a></li>';
+			}
+			array_push($found_items, $seriesRecord['series_name']);
 		}
 		echo $links;
 		?>

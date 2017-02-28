@@ -63,10 +63,16 @@ class ResourcesController extends Controller {
 		*/
 		
 		$audioRecords = ResourceLibrary::getSermonsByURL(NULL, $seriesByURL, NULL); //getSermons(speaker_id, searies_id, year)
-		if (count($audioRecords)) $this->set('audioRecords', $audioRecords);	
+		if (count($audioRecords)) $this->set('audioRecords', $audioRecords);
 		$this->set('whichTab','series');
 	}
-	
+
+	function sunday_school($seriesByURL = NULL) {
+		Loader::model('resource_library', 'resource_library');
+		$audioRecords = ResourceLibrary::getSermonsByURL(NULL, $seriesByURL, NULL);
+		if (count($audioRecords)) $this->set('audioRecords', $audioRecords);
+		$this->set('whichTab','sunday_school');
+	}
 	
 	/*** Misc ***/
 	function cleanURL($url) {

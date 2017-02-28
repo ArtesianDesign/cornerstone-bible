@@ -98,6 +98,14 @@ class ResourceLibraryPageTypeController extends Controller {
 		$this->set('whichTab','series');
 	}
 
+	function sunday_school($seriesByURL = NULL) {
+		Loader::model('resource_library', 'resource_library');
+		
+		$audioRecords = ResourceLibrary::getSermonsByURL(NULL, $seriesByURL, NULL);
+		if (count($audioRecords)) $this->set('audioRecords', $audioRecords);
+		$this->set('whichTab','sunday_school');
+	}
+
 	function getMp3Length($file) {
 		$mp3file = new mp3file($file);
 		$metadata = $mp3file->get_metadata();
